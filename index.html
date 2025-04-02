@@ -137,9 +137,9 @@
  <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
+      <img src="static/images/overview.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        We introduce the first autoregressive model for monocular depth estimation (MDE), called DAR — a simple, effective, and scalable framework. Our key insight lies in transforming two ordered properties in MDE, depth map resolution and granularity, into autoregressive objectives. By recast MDE as a coarse-to-fine autoregressive objective process, DAR can be easily scaled up to larger size to obtain better performance and generalization.
       </h2>
     </div>
   </div>
@@ -170,20 +170,26 @@
     <div class="columns is-centered">
       <div class="column is-full">
         <div class="content">
-          <h2 class="title is-3">Learning within Model Trees</h2>
-         <p>
-              <img src="/probex/static/images/motivation.png" alt="Directional Weight Score" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
-            </p>
-            <p>
-                  We conduct 4 motivating experiments that illustrate the benefits of learning within Model Trees. In each experiment, we train a linear classifier to predict the classes a ViT model was fine-tuned on.
-              First, we show that <em>learning within Model Trees is significantly simpler (a)</em> by comparing a metanetwork trained on models from the same tree \(T\) with one trained on models from different trees \(F\). Next, we demonstrate <em>positive transfer within the same tree (b)</em> by showing that adding more models from the same tree improves the performance.  Surprisingly, we observe <em>negative transfer between Model Trees (c)</em>, where adding samples from other trees degrades performance on a single tree. Finally, we find that <em>expert learning is preferable when learning from multiple trees (d)</em>, as a single shared metanetwork performs worse than an expert metanetwork per tree (MoE).
-            </p>
+          <h2 class="title is-3">Motivation: Autoregressive Objective</h2>
+
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <p>We exploit two “order” properties of the MDE task that can be transformed into two autoregressive objectives. (a) Resolution autoregressive objective: The generation of depth maps can follow a resolution order from low to high. For each step of the resolution autoregressive process, the Transformer predicts the next higher-resolution token map conditioned on all the previous ones. (b) Granularity autoregressive objective: The range of depth values is ordered, from 0 to specific max values. For each step of the granularity autoregressive process, we increase exponentially the number of bins (e.g., doubling the bin number), and utilize the previous predictions to predict a more refined depth with a smaller and more refined granularity. 
+              </p>
+              <p>Motivated by this, we propose DAR, which cast the MDE into autoregressive framework that aims to perform these two autoregressive processes simultaneously.
+              </p>
+            </div>
+            <div class="column is-one-third">
+              <img src="/mother/static/images/llama_tree.png" alt="Weight distance correlation" class="blend-img-background center-image" style="max-width: 85%; height: auto;" />
+              <em><strong>Motivation:</strong></em> Two 'order' properties that naturally become autoregressive objectives.
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 
 
