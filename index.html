@@ -134,20 +134,16 @@
 
 
 <!-- Teaser video-->
-<section class="hero teaser">
+ <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
+      <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
         Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
       </h2>
     </div>
   </div>
-</section>
+</section> 
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
@@ -158,7 +154,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            This paper shows that the autoregressive model is an effective and scalable monocular depth estimator. Our idea is simple: We tackle the monocular depth estimation (MDE) task with an autoregressive prediction paradigm, based on two core designs. First, our depth autoregressive model (DAR) treats the depth map of different resolutions as a set of tokens, and conducts the low-to-high resolution autoregressive objective with a patch-wise casual mask. Second, our DAR recursively discretizes the entire depth range into more compact intervals, and attains the coarse-to-fine granularity autoregressive objective in an ordinal-regression manner. By coupling these two autoregressive objectives, our DAR establishes new state-of-the-art (SOTA) on KITTI and NYU Depth v2 by clear margins. Further, our scalable approach allows us to scale the model up to 2.0B and achieve the best RMSE of 1.799 on the KITTI dataset (5% improvement) compared to 1.896 by the current SOTA (Depth Anything). DAR further showcases zero-shot generalization ability on unseen datasets. These results suggest that DAR yields superior performance with an autoregressive prediction paradigm, providing a promising approach to equip modern autoregressive large models (e.g., GPT-4o) with depth estimation capabilities.
           </p>
         </div>
       </div>
@@ -168,127 +164,116 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Learning within Model Trees</h2>
+         <p>
+              <img src="/probex/static/images/motivation.png" alt="Directional Weight Score" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
+            </p>
+            <p>
+                  We conduct 4 motivating experiments that illustrate the benefits of learning within Model Trees. In each experiment, we train a linear classifier to predict the classes a ViT model was fine-tuned on.
+              First, we show that <em>learning within Model Trees is significantly simpler (a)</em> by comparing a metanetwork trained on models from the same tree \(T\) with one trained on models from different trees \(F\). Next, we demonstrate <em>positive transfer within the same tree (b)</em> by showing that adding more models from the same tree improves the performance.  Surprisingly, we observe <em>negative transfer between Model Trees (c)</em>, where adding samples from other trees degrades performance on a single tree. Finally, we find that <em>expert learning is preferable when learning from multiple trees (d)</em>, as a single shared metanetwork performs worse than an expert metanetwork per tree (MoE).
+            </p>
+        </div>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
 
 
 
 
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Largest Model Trees on Hugging Face</h2>
+          <div class="level-set has-text-justified">
+<p>
+                    <img src="/probex/static/images/model_sizes.png" alt="Sizes of model trees" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
+          </p>
+              <p>
+                We show the 10 largest Model Trees on Hugging Face. Our insight is that learning an expert for each tree greatly simplifies weight-space learning. This is a practical setting as a few large Model Trees dominate the landscape.
+              </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
 
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Probing Experts (ProbeX)</h2>
+          <p>
+          <img src="/probex/static/images/ProbeX_overview.png" alt="ProbeX Overview" class="blend-img-background center-image" style="max-width: 85%; height: auto;" />
+          </p>
+           <p>
+              Unlike conventional probing methods that operate only on inputs and outputs, our lightweight architecture scales weight-space learning to large models by probing hidden model layers. ProbeX begins by passing a set of learned probes, 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi mathvariant="bold">u</mi><mo>_</mo><mn>1</mn><mo>,</mo><mi mathvariant="bold">u</mi><mo>_</mo><mn>2</mn><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><mi mathvariant="bold">u</mi><mo>_</mo><mi>r</mi><mo>_</mo><mi>U</mi>
+              </math>, through the input weight matrix 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>X</mi>
+              </math>. A projection matrix 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>V</mi>
+              </math>, shared between all probes, reduces the dimensionality of the probe responses, followed by a non-linear activation. Each probe response is then mapped to a probe encoding 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi mathvariant="bold">e</mi><mo>_</mo><mi>l</mi>
+              </math> via a per-probe encoder matrix 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>M</mi><mo>_</mo><mi>l</mi>
+              </math>. We sum the probe encodings to obtain the final model encoding 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi mathvariant="bold">e</mi>
+              </math>, which the predictor head maps to the task output 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi mathvariant="bold">y</mi>
+              </math>.
+            </p>    
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
 
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Results</h2>
+            <p>
+              ProbeX achieves state-of-the-art results on the task of training category prediction, accurately identifying the specific classes within a model’s training dataset. Excitingly, ProbeX can also align fine-tuned Stable Diffusion weights with language representations. This capability enables a new task: zero-shot model classification, where models are classified via a text prompt describing their training data. Using these aligned representations, ProbeX can also perform model retrieval.
+            </p>
+              <img src="/probex/static/images/retrieval.png" alt="Model retrieval" class="blend-img-background center-image" style="max-width: 85%; height: auto;" />
+        </div>
       </div>
     </div>
-  </section>
-<!--End paper poster -->
-
+  </div>
+</section>
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@article{wang2024scalable,
+        title={Scalable Autoregressive Monocular Depth Estimation},
+        author={Wang, Jinhong and Liu, Jian and Tang, Dongqi and Wang, Weiqiang and Li, Wentong and Chen, Danny and Chen, Jintai and Wu, Jian},
+        journal={arXiv preprint arXiv:2411.11361},
+        year={2024}
+      }</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
